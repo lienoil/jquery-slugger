@@ -3,7 +3,7 @@
  *
  * This project is used to be called jQuery Slugify until I discovered slugify is already taken in `npm`.
  *
- * v1.0.1
+ * v1.0.2
  *
  * @author  John Lioneil Dionisio
  *
