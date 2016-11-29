@@ -1,5 +1,7 @@
 /**
- * jQuery Slugify
+ * jQuery Slugger
+ * Because "slugify" is already taken.
+ *
  * v1.0.0
  *
  * @author  John Lioneil Dionisio
@@ -10,6 +12,10 @@
  */
 (function ($, document) {
 
+    'use strict';
+
+    var slugSeparator = 'slug-separator';
+
 	var Slugify = {
         init: function (options, elem) {
         	var self = this;
@@ -17,13 +23,11 @@
             self.$elem = $(elem);
             self.options = $.extend( {}, $.fn.slugify.options, options );
             self.options.target = "" == self.$elem.data('slugify') ? self.options.target : self.$elem.data('slugify');
-            self.options.separator = undefined == self.$elem.data('slug-separator') ? self.options.separator : self.$elem.data('slug-separator');
-            console.log(self.options);
+            self.options.separator = undefined == self.$elem.data(slugSeparator) ? self.options.separator : self.$elem.data(slugSeparator);
 
-
-            self.$elem.on('keyup', function (e) {
+            self.$elem.on(self.options.bindToEvent, function (e) {
 	            var $string = $(this).val();
-	            $string = self.convert($string);
+	            $string = self.convert($string, self);
 	            $(self.options.target).val($string);
 
 	            if (self.options.debug) self.debug($string);
@@ -32,10 +36,22 @@
         	return true;
         },
 
-        convert: function ($string) {
-        	return $string.toLowerCase()
-        			.replace(/ /g, this.options.separator)
-        			.replace(/[^\w-]+/g, '');
+        convert: function ($string, self) {
+            self.options.beforeConvert(self);
+
+            if (self.options.convertToLowerCase) {
+                $string = $string.toLowerCase();
+            }
+
+        	$string = $string.replace(/ /g, this.options.separator);
+
+            if (!self.options.isUrlFriendly) {
+                $string = $string.replace(/[^\w-]+/g, '');
+            }
+
+            self.options.afterConvert(self);
+
+            return $string;
         },
 
         destroy: function () {
@@ -57,12 +73,19 @@
     };
 
     $.fn.slugify.options = {
+        bindToEvent: 'keypress keyup',
         target: '[name=slug]',
         separator: '-',
-        debug: false,
+
+        convertToLowerCase: true,
+        isUrlFriendly: true,
+
+        bannedChars: '',
 
         beforeConvert: function (self) {},
         afterConvert: function (self) {},
+
+        debug: false,
     };
     jQuery('[data-slugify]').slugify();
 
