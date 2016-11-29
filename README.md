@@ -17,7 +17,7 @@ npm install jquery-slugger
 or download or clone on [GitHub](https://github.com/lioneil/jquery-slugger).
 
 ### Usage
-Just add it to your project and identify the elements using `data-slugify`.
+Just add it to your project and identify the elements using `data-slugger`.
 
 
 1. Sample use case (basic):
@@ -25,8 +25,8 @@ Just add it to your project and identify the elements using `data-slugify`.
 <form>
   <div class="form-group">
 	  <label for="title">Title</label>
-    <!-- auto initialize via data-slugify -->
-		<input id="title" type="text" class="form-control" name="title" data-slugify>
+    <!-- auto initialize via data-slugger -->
+		<input id="title" type="text" class="form-control" name="title" data-slugger>
 	</div>
 	<div class="form-group">
 	  <label for="slug">Slug</label>
@@ -46,16 +46,16 @@ Just add it to your project and identify the elements using `data-slugify`.
 <form>
   <div class="form-group">
 	  <label for="title">Title</label>
-    <!-- auto initialize via data-slugify -->
-		<input id="title" type="text" class="form-control" name="title" data-slugify=".to-slugify">
+    <!-- auto initialize via data-slugger -->
+		<input id="title" type="text" class="form-control" name="title" data-slugger=".to-slugger">
 	</div>
 	<div class="form-group">
 	  <label for="slug">Slug</label>
-		<input id="slug" type="text" class="form-control to-slugify" name="slug">
+		<input id="slug" type="text" class="form-control to-slugger" name="slug">
 	</div>
   <div class="form-group">
 	  <label for="url">URL</label>
-		<input id="url" type="text" class="form-control to-slugify" name="url">
+		<input id="url" type="text" class="form-control to-slugger" name="url">
 	</div>
 </form>
 ```
@@ -65,8 +65,8 @@ Just add it to your project and identify the elements using `data-slugify`.
 <form>
   <div class="form-group">
 	  <label for="fullname">Full Name</label>
-    <!-- auto initialize via `data-slugify`, `data-slug-separator` is for defining custom space replacer -->
-		<input id="fullname" type="text" class="form-control" name="fullname" data-slugify="#username" data-slug-separator="_">
+    <!-- auto initialize via `data-slugger`, `data-slug-separator` is for defining custom space replacer -->
+		<input id="fullname" type="text" class="form-control" name="fullname" data-slugger="#username" data-slug-separator="_">
 	</div>
 	<div class="form-group">
 	  <label for="username">Username</label>
