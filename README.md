@@ -47,15 +47,15 @@ Just add it to your project and identify the elements using `data-slugger`.
   <div class="form-group">
 	  <label for="title">Title</label>
     <!-- auto initialize via data-slugger -->
-		<input id="title" type="text" class="form-control" name="title" data-slugger=".to-slugger">
+		<input id="title" type="text" class="form-control" name="title" data-slugger=".to-slugify">
 	</div>
 	<div class="form-group">
 	  <label for="slug">Slug</label>
-		<input id="slug" type="text" class="form-control to-slugger" name="slug">
+		<input id="slug" type="text" class="form-control to-slugify" name="slug">
 	</div>
   <div class="form-group">
 	  <label for="url">URL</label>
-		<input id="url" type="text" class="form-control to-slugger" name="url">
+		<input id="url" type="text" class="form-control to-slugify" name="url">
 	</div>
 </form>
 ```
