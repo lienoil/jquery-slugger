@@ -30,7 +30,7 @@ var directories = {
     }
 }
 
-var _name = 'jquery.slugify.js';
+var _name = 'jquery.slugger.js';
 
 /*
 | # Scripts
@@ -50,4 +50,23 @@ gulp.task('scripts', function () {
         // .pipe(gulp.dest(directories.js.build))
         .pipe(gulp.dest(directories.dist.js))
         .pipe(notify({ message: 'Completed compiling JS Files' }));
+});
+
+
+/*
+| # Clean
+|
+| @run  gulp clean
+*/
+gulp.task('clean', function () {
+    return del([directories.dist.js]);
+});
+
+/*
+| # Default Task
+|
+| @run  gulp default
+*/
+gulp.task('default', ['clean'], function () {
+    gulp.start('scripts');
 });

@@ -1,6 +1,7 @@
 /**
  * jQuery Slugger
- * Because "slugify" is already taken.
+ *
+ * This project is used to be called jQuery Slugify until I discovered slugify is already taken in `npm`.
  *
  * v1.0.0
  *
@@ -21,8 +22,8 @@
         	var self = this;
             self.elem = elem;
             self.$elem = $(elem);
-            self.options = $.extend( {}, $.fn.slugify.options, options );
-            self.options.target = "" == self.$elem.data('slugify') ? self.options.target : self.$elem.data('slugify');
+            self.options = $.extend( {}, $.fn.slugger.options, options );
+            self.options.target = "" == self.$elem.data('slugger') ? self.options.target : self.$elem.data('slugger');
             self.options.separator = undefined == self.$elem.data(slugSeparator) ? self.options.separator : self.$elem.data(slugSeparator);
 
             self.$elem.on(self.options.bindToEvent, function (e) {
@@ -65,14 +66,14 @@
         },
     };
 
-    $.fn.slugify = function (options, elem) {
-        var slugify = Object.create(Slugify);
+    $.fn.slugger = function (options, elem) {
+        var slugger = Object.create(Slugify);
         return this.each(function () {
-            slugify.init(options, this);
+            slugger.init(options, this);
         });
     };
 
-    $.fn.slugify.options = {
+    $.fn.slugger.options = {
         bindToEvent: 'keypress keyup',
         target: '[name=slug]',
         separator: '-',
@@ -80,13 +81,11 @@
         convertToLowerCase: true,
         isUrlFriendly: true,
 
-        bannedChars: '',
-
         beforeConvert: function (self) {},
         afterConvert: function (self) {},
 
         debug: false,
     };
-    jQuery('[data-slugify]').slugify();
+    jQuery('[data-slugger]').slugger();
 
 })(jQuery, document);
