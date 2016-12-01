@@ -24,11 +24,11 @@
 			<form action="">
 				<div class="form-group">
 					<label for="title">Title</label>
-					<input id="title" type="text" class="form-control" name="title" data-slugger>
+					<input id="title" type="text" class="form-control" name="title">
 				</div>
 				<div class="form-group">
 					<label for="slug">Slug</label>
-					<input id="slug" type="text" class="form-control" name="slug">
+					<input id="slug" type="text" class="form-control the-slug" name="">
 				</div>
 			</form>
 		</div>
@@ -36,5 +36,9 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script src="../src/jquery.slugger.js"></script>
+
+	<script>
+		$('#title').slugger({target:'.the-slug'});
+	</script>
 </body>
 </html>

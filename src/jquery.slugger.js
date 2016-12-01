@@ -3,7 +3,7 @@
  *
  * This project is used to be called jQuery Slugify until I discovered slugify is already taken in `npm`.
  *
- * v1.0.2
+ * v1.0.3
  *
  * @author  John Lioneil Dionisio
  *
@@ -23,7 +23,8 @@
             self.elem = elem;
             self.$elem = $(elem);
             self.options = $.extend( {}, $.fn.slugger.options, options );
-            self.options.target = "" == self.$elem.data('slugger') ? self.options.target : self.$elem.data('slugger');
+            self.sluggerElement = undefined == self.$elem.data('slugger') ? self.elem : self.$elem.data('slugger');
+            self.options.target = "" == self.$elem.data('slugger') || undefined == self.$elem.data('slugger') ? self.options.target : self.$elem.data('slugger');
             self.options.separator = undefined == self.$elem.data(slugSeparator) ? self.options.separator : self.$elem.data(slugSeparator);
 
             self.$elem.on(self.options.bindToEvent, function (e) {
