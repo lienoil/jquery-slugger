@@ -30,6 +30,10 @@
 					<label for="slug">Slug</label>
 					<input id="slug" type="text" class="form-control the-slug" name="">
 				</div>
+				<div class="form-group">
+					<label for="label">Label</label>
+					<input id="label" type="text" class="form-control the-label" name="">
+				</div>
 			</form>
 		</div>
 	</div>
@@ -38,7 +42,7 @@
 	<script src="../src/jquery.slugger.js"></script>
 
 	<script>
-		$('#title').slugger({target:'.the-slug'});
+		$('#title').slugger({target:'.the-slug', separator: '_'}).slugger({target:'.the-label', separator: ' ',convertToLowerCase:false});
 	</script>
 </body>
 </html>

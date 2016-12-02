@@ -3,7 +3,7 @@
  *
  * This project is used to be called jQuery Slugify until I discovered slugify is already taken in `npm`.
  *
- * v1.0.3
+ * v1.0.4
  *
  * @author  John Lioneil Dionisio
  *
@@ -45,7 +45,9 @@
                 $string = $string.toLowerCase();
             }
 
-        	$string = $string.replace(/ /g, this.options.separator);
+            if (self.options.separator !== " ") {
+            	$string = $string.replace(/ /g, this.options.separator);
+            }
 
             if (!self.options.isUrlFriendly) {
                 $string = $string.replace(/[^\w-]+/g, '');
